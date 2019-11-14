@@ -11,7 +11,11 @@ namespace DEXCource
         public void OOPTest()
         {
             Assert.DoesNotThrow(() => Alan.Introduse());
+            Assert.DoesNotThrow(() => Alan.SaySomething());
+            Assert.DoesNotThrow(() => Alan.DoSomething());
             Assert.DoesNotThrow(() => Albert.Introduse());
+            Assert.DoesNotThrow(() => Albert.SaySomething());
+            Assert.DoesNotThrow(() => Albert.DoSomething());
         }
     }
     public abstract class Scientist
