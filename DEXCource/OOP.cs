@@ -43,7 +43,16 @@ namespace DEXCource
         }
         public override void DoSomething()
         {
-            
+            Console.WriteLine("Смотри, я знаю, что такое целые числа, проверь меня, введи что нибудь:");
+            int Number = getStringAndParseToInt();
+            Console.WriteLine("О, ты ввел число, давай теперь я возведу его в десятую степень: ");
+            for(int i = 0; i <= 10, i++)
+            {
+                Number = intMultiplication(Number, Number);
+            }
+            Console.WriteLine(Number);
+            Console.WriteLine("А теперь, давай найдем середину: ");
+            Console.WriteLine(intDivision(Number, 2));
         }
         protected virtual int getStringAndParseToInt()
         {
@@ -52,7 +61,7 @@ namespace DEXCource
 
             while (!Int32.TryParse(stringForCheck, out parsedInt))
             {
-                Console.WriteLine("Подойдут только числа, попробуйте еще раз.");
+                Console.WriteLine("Это не целое число, попробуй еще раз.");
                 stringForCheck = Console.ReadLine();
             }
             return parsedInt;
@@ -82,7 +91,7 @@ namespace DEXCource
         }
         public override void DoSomething()
         {
-            base.DoSomething();
+
         }
         private void showOhmEquation(int FirstNumber, int SecondNumber)
         {
