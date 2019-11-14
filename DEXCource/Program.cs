@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace DEXCource
 {
@@ -8,6 +9,7 @@ namespace DEXCource
         {
             Console.WriteLine("Hi, its a education project, run Unit Tests to see it!");
             Console.ReadLine();
+         
         }
     }
 }
