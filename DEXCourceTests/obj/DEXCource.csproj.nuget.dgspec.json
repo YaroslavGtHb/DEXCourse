@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCource\\DEXCource.csproj": {}
+    "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCource\\DEXCource.csproj": {
+    "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCource\\DEXCource.csproj",
+        "projectUniqueName": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj",
         "projectName": "DEXCource",
-        "projectPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCource\\DEXCource.csproj",
+        "projectPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj",
         "packagesPath": "C:\\Users\\Anonymous\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCource\\obj\\",
+        "outputPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Anonymous\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,7 +38,15 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
-            "NUnit": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.2.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            },
+            "nunit": {
               "target": "Package",
               "version": "[3.12.0, )"
             }

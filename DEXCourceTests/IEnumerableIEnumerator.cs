@@ -21,19 +21,30 @@ namespace DEXCource
                 Console.WriteLine("В нашем зоопарке есть:");
                 Console.WriteLine(animal);
             }
+            Console.WriteLine("Перечень животных:");
+            int pointer = 0;
+            while(pointer <= zoo.GetLenght())
+            {
+                Console.WriteLine(pointer + "." + zoo.GetItemName(pointer));
+                pointer += 1;
+            }
         }
     }
-
     public class ZOOArray
     {
-        string[] animals = new string[128];
+        string[] animals = new string[0];
         public void Add(string Animal)
         {
-            if (animals.Length > 128)
-            {
-                Array.Resize(ref animals, animals.Length + 128);
-            }
-            animals[animals.Length + 1] = Animal;
+            Array.Resize(ref animals, animals.Length + 1);
+            animals[^1] = Animal;
+        }
+        public int GetLenght()
+        {
+            return animals.Length;
+        }
+        public string GetItemName(int index)
+        {
+            return animals[index];
         }
         public IEnumerator<string> GetEnumerator()
         {
@@ -42,10 +53,10 @@ namespace DEXCource
         public class ZOOEnumerator : IEnumerator<string>
         {
             string[] animals;
-            public int Position { get; set; }
-            public ZOOEnumerator(string[] days)
+            public int Position { get; set; } = -1;
+            public ZOOEnumerator(string[] animals)
             {
-                animals = animals;
+                this.animals = animals;
             }
             public string Current
             {

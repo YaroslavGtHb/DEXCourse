@@ -5265,9 +5265,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCourceTests.csproj",
-      "projectName": "DEXCourceTests",
-      "projectPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCourceTests.csproj",
+      "projectUniqueName": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj",
+      "projectName": "DEXCource",
+      "projectPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\DEXCource.csproj",
       "packagesPath": "C:\\Users\\Anonymous\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Anonymous\\Desktop\\DEXCourse\\DEXCourceTests\\obj\\",
       "projectStyle": "PackageReference",
