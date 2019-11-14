@@ -10,19 +10,8 @@ namespace DEXCource
         [Test]
         public void OOPTest()
         {
-            //try
-            //{
-                Alan.Introduse();
-                Alan.SaySomething();
-                Alan.DoSomething();
-                Albert.Introduse();
-                Albert.SaySomething();
-                Albert.DoSomething();
-            //}
-            //catch(Exception ex)
-            //{
-            //    Assert.Fail(ex.Message);
-            //}
+            Assert.DoesNotThrow(() => Alan.Introduse());
+            Assert.DoesNotThrow(() => Albert.Introduse());
         }
     }
     public abstract class Scientist
