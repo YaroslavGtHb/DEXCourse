@@ -23,7 +23,7 @@ namespace DEXCource
             }
             Console.WriteLine("Перечень животных:");
             int pointer = 0;
-            while(pointer <= zoo.GetLenght())
+            while(pointer < zoo.GetLenght())
             {
                 Console.WriteLine(pointer + "." + zoo.GetItemName(pointer));
                 pointer += 1;
