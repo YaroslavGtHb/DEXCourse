@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,6 +7,7 @@ namespace DEXCource
 {
     class IEnumerableIEnumerator
     {
+        [Test]
         public void IEnumerableIEnumeratorTest()
         {
             var zoo = new ZOOArray();
