@@ -5,8 +5,8 @@ namespace DEXCource
 {
     class OOP
     {
-        Mathematician Alan = new Mathematician("AlanTuring", 288);
-        Physicist Albert = new Physicist("AlbertEinste", 488);
+        readonly Mathematician Alan = new Mathematician("AlanTuring", 288);
+        readonly Physicist Albert = new Physicist("AlbertEinste", 488);
         [Test]
         public void OOPTest()
         {
@@ -79,10 +79,7 @@ namespace DEXCource
         {
             return FirstMultipler * SecondMultipler;
         }
-        protected virtual float intDivision(int Divident, int Devider)
-        {
-            return Divident / Devider;
-        }
+        protected virtual float intDivision(int Divident, int Devider) => Divident / Devider;
 
     }
     public class Physicist : Mathematician
