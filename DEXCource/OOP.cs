@@ -1,9 +1,29 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 
 namespace DEXCource
 {
     class OOP
     {
+        Mathematician Alan = new Mathematician("AlanTuring", 288);
+        Physicist Albert = new Physicist("AlbertEinste", 488);
+        [Test]
+        public void OOPTest()
+        {
+            //try
+            //{
+                Alan.Introduse();
+                Alan.SaySomething();
+                Alan.DoSomething();
+                Albert.Introduse();
+                Albert.SaySomething();
+                Albert.DoSomething();
+            //}
+            //catch(Exception ex)
+            //{
+            //    Assert.Fail(ex.Message);
+            //}
+        }
     }
     public abstract class Scientist
     {
@@ -46,7 +66,7 @@ namespace DEXCource
             Console.WriteLine("Смотри, я знаю, что такое целые числа, проверь меня, введи что нибудь:");
             int Number = getStringAndParseToInt();
             Console.WriteLine("О, ты ввел число, давай теперь я возведу его в десятую степень: ");
-            for(int i = 0; i <= 10, i++)
+            for(int i = 0; i <= 10; i++)
             {
                 Number = intMultiplication(Number, Number);
             }
@@ -83,8 +103,8 @@ namespace DEXCource
             this.Name = Name;
             IQ = IQ;
         }
-        public string Name { get; }
-        public int IQ { get; }
+        public new string Name { get; }
+        public new int IQ { get; }
         public override void SaySomething()
         {
             Console.WriteLine("Я физик и имею право на сохранение энергии.");

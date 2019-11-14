@@ -9,3 +9,5 @@ C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\obj\Debug\netcoreapp3.0\DEXCource
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\obj\Debug\netcoreapp3.0\DEXCource.AssemblyInfo.cs
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\obj\Debug\netcoreapp3.0\DEXCource.dll
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\obj\Debug\netcoreapp3.0\DEXCource.pdb
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\bin\Debug\netcoreapp3.0\nunit.framework.dll
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCource\obj\Debug\netcoreapp3.0\DEXCource.csproj.CopyComplete
