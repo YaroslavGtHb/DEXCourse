@@ -91,7 +91,12 @@ namespace DEXCource
         }
         public override void DoSomething()
         {
-
+            Console.WriteLine("Благодаря математике, физики могут вычислять нечто интересное.");
+            Console.WriteLine("К примеру, скажи какое нибудь целое число:");
+            int FirstNumber = getStringAndParseToInt();
+            Console.WriteLine("А теперь еще одно:");
+            int SecondNumber = getStringAndParseToInt();
+            showOhmEquation(FirstNumber, SecondNumber);
         }
         private void showOhmEquation(int FirstNumber, int SecondNumber)
         {
