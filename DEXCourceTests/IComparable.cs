@@ -11,11 +11,11 @@ namespace DEXCource
         {
             var geometricFigures = GeometricFigureGenerate(10);
             Array.Sort(geometricFigures, new GeometricFigureComparer());
-            int testSquare = 0;
+            int testSquare = 999;
             foreach(var figure in geometricFigures)
             {
                 Console.WriteLine(figure.square);
-                Assert.That(figure.square >= testSquare);
+                Assert.That(figure.square <= testSquare);
                 testSquare = figure.square;
             }
         }
