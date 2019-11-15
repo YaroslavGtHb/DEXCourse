@@ -11,11 +11,14 @@ namespace DEXCource
         public void LINQTest()
         {
             var cats = BirdsGenerate(100);
-            var old = cats.Where(t => t.age < 30);
+            var old = cats.Where(t => t.age > 30);
             var orderByAge = cats.OrderBy(t => t.age);
             var groupByName = cats.GroupBy(t => t.name);
-            var onlyGarfield = cats.Any(t => t.name == "Гарфилд");
+            var onlyGarfield = cats.Where(t => t.name == "Гарфилд");
             var totalWeight = cats.Sum(t => t.weight);
+            Assert.That(old.All(t => t.age > 30));
+            Assert.That(onlyGarfield.All(t => t.name == "Гарфилд"));
+            Assert.That(totalWeight >= 100);
         }
         public Collection<Cat> BirdsGenerate(int BirdsCount)
         {
@@ -28,7 +31,7 @@ namespace DEXCource
             var generatedCats = new Collection<Cat>();
             for (int i = 0; i < BirdsCount; i++)
             {
-                generatedCats.Add(new Cat(generatedCats.Count, birdNames[random.Next(0, 7)], random.Next(1, 48), random.Next(100) < 50 ? true : false, random.NextDouble()));
+                generatedCats.Add(new Cat(generatedCats.Count, birdNames[random.Next(0, 7)], random.Next(1, 48), random.Next(100) < 50 ? true : false, random.Next(1, 88)));
             }
             return generatedCats;
         }
