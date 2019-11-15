@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace DEXCource
 {
     class LINQ
     {
+        [Test]
         public void LINQTest()
         {
             var cats = BirdsGenerate(100);
+            var old = cats.Where(t => t.age < 30);
+            var orderByAge = cats.OrderBy(t => t.age);
+            var groupByName = cats.GroupBy(t => t.name);
+            var onlyGarfield = cats.Any(t => t.name == "Гарфилд");
+            var totalWeight = cats.Sum(t => t.weight);
         }
         public Collection<Cat> BirdsGenerate(int BirdsCount)
         {
