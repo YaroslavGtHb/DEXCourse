@@ -8,22 +8,26 @@ namespace DEXCource
     {
     }
 
-    class GeometricFigure : IComparable
+    class GeometricFigure : IComparable<GeometricFigure>
     {
         public int Id;
         public string Type { get; set; }
         public int Square { get; set; }
-        public int CompareTo(object o)
+        public int CompareTo(GeometricFigure figure)
         {
-            GeometricFigure figure = o as GeometricFigure;
-            if (figure != null)
-            {
-                return Square.CompareTo(figure.Square);
-            }
+            return Square.CompareTo(figure.Square);
+        }
+    }
+    class GeometricFigureComparer : IComparer<GeometricFigure>
+    {
+        public int Compare(GeometricFigure firstFigure, GeometricFigure secondFigure)
+        {
+            if (firstFigure.Square > secondFigure.Square)
+                return 1;
+            else if (firstFigure.Square < secondFigure.Square)
+                return -1;
             else
-            {
-                throw new Exception("Невозможно сравнить два объекта");
-            }
+                return 0;
         }
     }
 }
