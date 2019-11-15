@@ -18,11 +18,33 @@ namespace DEXCource
     {
         public Person(string FirstName, string LastName)
         {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
+            this.SetFirstName(FirstName);
+            this.SetLastName(LastName);
         }
-        string FirstName { get; set; }
-        string LastName { get; set; }
+
+        private string firstName;
+
+        private string GetFirstName()
+        {
+            return firstName;
+        }
+
+        private void SetFirstName(string value)
+        {
+            firstName = value;
+        }
+
+        private string lastName;
+
+        private string GetLastName()
+        {
+            return lastName;
+        }
+
+        private void SetLastName(string value)
+        {
+            lastName = value;
+        }
 
         public static explicit operator Person(string v)
         {
