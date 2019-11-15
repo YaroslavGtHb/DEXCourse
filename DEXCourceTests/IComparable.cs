@@ -13,7 +13,7 @@ namespace DEXCource
             Array.Sort(geometricFigures, new GeometricFigureComparer()); 
             foreach(var figure in geometricFigures)
             {
-                Console.WriteLine(figure.Square);
+                Console.WriteLine(figure.square);
             }
         }
         public GeometricFigure[] GeometricFigureGenerate(int GeometricFigureCount)
