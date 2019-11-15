@@ -26,7 +26,7 @@ namespace DEXCource
             var random = new Random();
 
             var generatedCats = new Collection<Cat>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < BirdsCount; i++)
             {
                 generatedCats.Add(new Cat(generatedCats.Count, birdNames[random.Next(0, 7)], random.Next(1, 48), random.Next(100) < 50 ? true : false, random.NextDouble()));
             }
