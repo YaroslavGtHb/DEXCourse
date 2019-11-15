@@ -10,10 +10,13 @@ namespace DEXCource
         public void IComparableTest()
         {
             var geometricFigures = GeometricFigureGenerate(10);
-            Array.Sort(geometricFigures, new GeometricFigureComparer()); 
+            Array.Sort(geometricFigures, new GeometricFigureComparer());
+            int testSquare = 0;
             foreach(var figure in geometricFigures)
             {
                 Console.WriteLine(figure.square);
+                Assert.That(figure.square >= testSquare);
+                testSquare = figure.square;
             }
         }
         public GeometricFigure[] GeometricFigureGenerate(int GeometricFigureCount)
@@ -27,7 +30,7 @@ namespace DEXCource
             GeometricFigure[] geometricFigures = new GeometricFigure[GeometricFigureCount];
             for (int i = 0; i < GeometricFigureCount; i++)
             {
-                geometricFigures[i] = new GeometricFigure(i, geometricFigureTypes[random.Next(0, 7)], random.Next(0, 999));
+                geometricFigures[i] = new GeometricFigure(i, geometricFigureTypes[random.Next(0, 7)], random.Next(1, 999));
             }
             return geometricFigures;
         }
