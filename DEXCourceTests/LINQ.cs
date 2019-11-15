@@ -17,6 +17,12 @@ namespace DEXCource
             var onlyGarfield = cats.Where(t => t.name == "Гарфилд");
             var totalWeight = cats.Sum(t => t.weight);
             Assert.That(old.All(t => t.age > 30));
+            int testItem = 0;
+            foreach(var item in orderByAge)
+            {
+                Assert.That(item.age >= testItem);
+                testItem = item.age;
+            }
             Assert.That(onlyGarfield.All(t => t.name == "Гарфилд"));
             Assert.That(totalWeight >= 100);
         }
