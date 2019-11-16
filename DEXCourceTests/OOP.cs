@@ -11,6 +11,8 @@ namespace DEXCource
         public void OOPTest()
         {
             Alan.Introduse();
+            Alan.SaySomething();
+            Albert.SaySomething();
             Albert.Introduse();
 
         }
