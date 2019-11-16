@@ -89,3 +89,4 @@ C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXC
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.csproj.CopyComplete
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.dll
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.pdb
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.csprojAssemblyReference.cache
