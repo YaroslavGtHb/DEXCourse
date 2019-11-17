@@ -90,3 +90,7 @@ C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXC
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.dll
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.pdb
 C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\obj\Debug\netcoreapp3.0\DEXCource.csprojAssemblyReference.cache
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\bin\Debug\netcoreapp3.0\Castle.Core.dll
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\bin\Debug\netcoreapp3.0\Castle.Windsor.dll
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Anonymous\Desktop\DEXCourse\DEXCourceTests\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
