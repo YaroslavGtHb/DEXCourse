@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 
-
 namespace DEXCource
 {
     class GenericTypeGenericMember
