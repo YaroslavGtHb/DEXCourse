@@ -23,6 +23,8 @@ namespace DEXCource
             {
                 quere.Dequeue();
             }
+            quere.MaxElementsNotify += delegate () { MaxWasCalled = true; };
+            quere.ZeroElementsNotify -= delegate () { NullWasCalled = true; };
             Assert.IsTrue(MaxWasCalled);
             Assert.IsTrue(NullWasCalled);
         }
