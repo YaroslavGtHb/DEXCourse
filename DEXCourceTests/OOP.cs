@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Runtime.Remoting;
 
 namespace DEXCource
 {
@@ -7,6 +8,12 @@ namespace DEXCource
     {
         readonly Mathematician Alan = new Mathematician("AlanTuring", 288);
         readonly Physicist Albert = new Physicist("AlbertEinste", 488);
+
+        public static explicit operator OOP(ObjectHandle v)
+        {
+            throw new NotImplementedException();
+        }
+
         [Test]
         public void OOPTest()
         {
@@ -14,7 +21,6 @@ namespace DEXCource
             Alan.SaySomething();
             Albert.SaySomething();
             Albert.Introduse();
-
         }
     }
     public abstract class Scientist
