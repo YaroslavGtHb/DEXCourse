@@ -18,7 +18,6 @@ namespace DEXCource
             MethodInfo privateMethod = privateClassMethods.First(m => m.Name == "PrivateMethod");
             var privateMethodResult = privateMethod.Invoke(privateClassInstance, new object[] { "Привет", "Мир!" });
             Assert.AreEqual(privateMethodResult, "ПриветМир!");
-
         }
     }
     class PrivateClass
