@@ -22,6 +22,20 @@ namespace DEXCource
             MatchCollection OneMillionMatches = OneMillion.Matches(RegExpString);
             MatchCollection FloatMatches = Float.Matches(RegExpString);
             Assert.IsTrue(OneMatches.Count == 2 && OneThousandMatches.Count == 4 && OneMillionMatches.Count == 4 && FloatMatches.Count == 8);
+
+            string spaceKeyString = "Это        совершенно    случайная  фраза  для  теста  обрезания  ненужных  пробелов.";
+            Regex spaceTrimmer = new Regex(@"\s\s+");
+            spaceKeyString = spaceTrimmer.Replace(spaceKeyString, " ");
+            Assert.AreEqual(spaceKeyString, "Это совершенно случайная фраза для теста обрезания ненужных пробелов.");
+
+            string internationalNumberString = "+373 77767852";
+            string internalNumberString = "77767852";
+            string internalCodeNumberString = " 0(777) 67852";
+            Regex Number = new Regex(@"^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){8,14}(\s*)?$");
+            MatchCollection internationalNumberMathes = Number.Matches(internationalNumberString);
+            MatchCollection internalNumberMathes = Number.Matches(internalNumberString);
+            MatchCollection internalCodeNumberMathes = Number.Matches(internalCodeNumberString);
+            Assert.IsTrue(internationalNumberMathes.Count == 1 && internationalNumberMathes.Count == 1 && internalCodeNumberMathes.Count == 1);
         }
     }
 }
