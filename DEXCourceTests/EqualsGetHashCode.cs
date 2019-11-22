@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using NUnit.Framework;
 
 namespace DEXCource
 {
-    class EqualsGetHashCode
+    internal class EqualsGetHashCode
     {
         [Test]
         public void EqualsGetHashCodeTest()
@@ -16,52 +16,53 @@ namespace DEXCource
             Assert.IsFalse(firstPerson.Equals(secondPerson));
         }
     }
-    class PersonInfo
+
+    internal class PersonInfo
     {
-        public PersonInfo(string FIO, string BirthDate, string BirthPlace, int PassportId)
+        public PersonInfo(string Fio, string BirthDate, string BirthPlace, int PassportId)
         {
-            this.FIO = FIO;
+            this.Fio = Fio;
             this.BirthDate = BirthDate;
             this.BirthPlace = BirthPlace;
             this.PassportId = PassportId;
         }
-        string FIO { get; set; }
-        string BirthDate { get; set; }
-        string BirthPlace { get; set; }
-        int PassportId { get; set; }
+
+        private string Fio { get; }
+        private string BirthDate { get; }
+        private string BirthPlace { get; }
+        private int PassportId { get; }
+
         public override int GetHashCode()
         {
             byte[] bytehash;
-            using (MD5 md5 = MD5.Create())
+            using (var md5 = MD5.Create())
             {
-                string instring = FIO + BirthDate + BirthPlace + PassportId;
+                var instring = Fio + BirthDate + BirthPlace + PassportId;
                 md5.Initialize();
                 md5.ComputeHash(Encoding.UTF8.GetBytes(instring));
                 bytehash = md5.Hash;
             }
-            int outhash = BitConverter.ToInt32(bytehash, 0);
+
+            var outhash = BitConverter.ToInt32(bytehash, 0);
             return outhash;
         }
+
         public override bool Equals(object testedPerson)
         {
             PersonInfo person;
             try
             {
-                person = (PersonInfo)testedPerson;
+                person = (PersonInfo) testedPerson;
             }
-            catch(InvalidCastException)
+            catch (InvalidCastException)
             {
                 return false;
             }
 
-            if (FIO == person.FIO && BirthDate == person.BirthDate && BirthPlace == person.BirthPlace && PassportId == person.PassportId)
-            {
+            if (person != null && Fio == person.Fio && BirthDate == person.BirthDate &&
+                BirthPlace == person.BirthPlace && PassportId == person.PassportId)
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

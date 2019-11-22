@@ -1,41 +1,40 @@
 ﻿using Newtonsoft.Json;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DEXCource
 {
-    class Serialization
+    internal class Serialization
     {
         [Test]
         public void SerializationTest()
         {
-            var SerializableInstance = new SerializationClass("Сериализатор", "Сериализаторов", 42, 88);
-            string SerializableString = JsonConvert.SerializeObject(SerializableInstance);
-            SerializationClass DeserializableInstance = JsonConvert.DeserializeObject<SerializationClass>(SerializableString);
-            Assert.AreEqual(SerializableInstance.firstName, DeserializableInstance.firstName);
-            Assert.AreEqual(SerializableInstance.lastName, DeserializableInstance.lastName);
-            Assert.AreEqual(SerializableInstance.ID, DeserializableInstance.ID);
-            Assert.AreEqual(SerializableInstance.Level, DeserializableInstance.Level);
+            var serializableInstance = new SerializationClass("Сериализатор", "Сериализаторов", 42, 88);
+            var serializableString = JsonConvert.SerializeObject(serializableInstance);
+            var deserializableInstance = JsonConvert.DeserializeObject<SerializationClass>(serializableString);
+            Assert.AreEqual(serializableInstance.FirstName, deserializableInstance.FirstName);
+            Assert.AreEqual(serializableInstance.LastName, deserializableInstance.LastName);
+            Assert.AreEqual(serializableInstance.Id, deserializableInstance.Id);
+            Assert.AreEqual(serializableInstance.Level, deserializableInstance.Level);
         }
     }
+
     public class SerializationClass
     {
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public int ID { get; set; }
-        public int Level { get; set; }
         public SerializationClass()
         {
-
         }
-        public SerializationClass(string firstName, string lastName, int ID, int Level)
+
+        public SerializationClass(string firstName, string lastName, int Id, int Level)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.ID = ID;
+            FirstName = firstName;
+            LastName = lastName;
+            this.Id = Id;
             this.Level = Level;
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Id { get; set; }
+        public int Level { get; set; }
     }
 }

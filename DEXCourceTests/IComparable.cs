@@ -1,67 +1,69 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace DEXCource
 {
-    class IComparable
+    internal class IComparable
     {
         [Test]
         public void IComparableTest()
         {
             var geometricFigures = GeometricFigureGenerate(10);
             Array.Sort(geometricFigures, new GeometricFigureComparer());
-            int testSquare = 999;
-            foreach(var figure in geometricFigures)
+            var testSquare = 999;
+            foreach (var figure in geometricFigures)
             {
-                Console.WriteLine(figure.square);
-                Assert.That(figure.square <= testSquare);
-                testSquare = figure.square;
+                Console.WriteLine(figure.Square);
+                Assert.That(figure.Square <= testSquare);
+                testSquare = figure.Square;
             }
         }
+
         public GeometricFigure[] GeometricFigureGenerate(int GeometricFigureCount)
         {
-            string[] geometricFigureTypes = new string[8]
+            var geometricFigureTypes = new string[8]
             {
-                "Многоугольник", "Шестнадцатиугольник", "Восьмиугольник", "Тропеция", "Ромб", "Прямоугольник", "Квадрат", "Круг"
+                "Многоугольник", "Шестнадцатиугольник", "Восьмиугольник", "Тропеция", "Ромб", "Прямоугольник",
+                "Квадрат", "Круг"
             };
             var random = new Random();
 
-            GeometricFigure[] geometricFigures = new GeometricFigure[GeometricFigureCount];
-            for (int i = 0; i < GeometricFigureCount; i++)
-            {
-                geometricFigures[i] = new GeometricFigure(i, geometricFigureTypes[random.Next(0, 7)], random.Next(1, 999));
-            }
+            var geometricFigures = new GeometricFigure[GeometricFigureCount];
+            for (var i = 0; i < GeometricFigureCount; i++)
+                geometricFigures[i] =
+                    new GeometricFigure(i, geometricFigureTypes[random.Next(0, 7)], random.Next(1, 999));
             return geometricFigures;
         }
     }
-    class GeometricFigure : IComparable<GeometricFigure>
+
+    internal class GeometricFigure : IComparable<GeometricFigure>
     {
         public GeometricFigure(int id, string type, int square)
         {
-            this.id = id;
-            this.type = type;
-            this.square = square;
+            Id = id;
+            Type = type;
+            Square = square;
         }
-        public int id { get; }
-        public string type { get; set; }
-        public int square { get; set; }
+
+        public int Id { get; }
+        public string Type { get; set; }
+        public int Square { get; set; }
+
         public int CompareTo(GeometricFigure figure)
         {
-            return square.CompareTo(figure.square);
+            return Square.CompareTo(figure.Square);
         }
     }
-    class GeometricFigureComparer : IComparer<GeometricFigure>
+
+    internal class GeometricFigureComparer : IComparer<GeometricFigure>
     {
         public int Compare(GeometricFigure firstFigure, GeometricFigure secondFigure)
         {
             //Поменял местами, для обратной сортивровки.
-            if (firstFigure.square < secondFigure.square)
+            if (firstFigure != null && firstFigure.Square < secondFigure.Square)
                 return 1;
-            else if (firstFigure.square > secondFigure.square)
-                return -1;
-            else
-                return 0;
+            return firstFigure.Square > secondFigure.Square ? -1 : 0;
         }
     }
 }

@@ -1,27 +1,25 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace DEXCource
 {
-    class GenericTypeGenericMember
+    internal class GenericTypeGenericMember
     {
         [Test]
         public void GenericTypeGenericMemberTest()
         {
-            UniqueCollection<string> uniquecollection = new UniqueCollection<string>();
+            var uniquecollection = new UniqueCollection<string>();
             uniquecollection.AddUnique("Значение");
             uniquecollection.AddUnique("Значение");
             Assert.IsTrue(uniquecollection.Count == 1);
         }
-    public class UniqueCollection<T> : List<T>
-    {
-        public void AddUnique(T item)
+
+        public class UniqueCollection<T> : List<T>
         {
-                if(!this.Contains(item))
-                {
-                    this.Add(item);
-                }
+            public void AddUnique(T item)
+            {
+                if (!Contains(item)) Add(item);
+            }
         }
     }
-}
 }

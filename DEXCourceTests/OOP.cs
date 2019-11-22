@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Runtime.Remoting;
+using NUnit.Framework;
 
 namespace DEXCource
 {
-    class OOP
+    internal class OOP
     {
-        readonly Mathematician Alan = new Mathematician("AlanTuring", 288);
-        readonly Physicist Albert = new Physicist("AlbertEinste", 488);
+        private readonly Mathematician _alan = new Mathematician("AlanTuring", 288);
+        private readonly Physicist _albert = new Physicist("AlbertEinste", 488);
 
         public static explicit operator OOP(ObjectHandle v)
         {
@@ -17,108 +17,129 @@ namespace DEXCource
         [Test]
         public void OOPTest()
         {
-            Alan.Introduse();
-            Alan.SaySomething();
-            Albert.SaySomething();
-            Albert.Introduse();
+            _alan.Introduse();
+            _alan.SaySomething();
+            _albert.SaySomething();
+            _albert.Introduse();
         }
     }
+
     public abstract class Scientist
     {
-        public Scientist(string Name, int IQ)
+        protected Scientist(string Name, int Iq)
         {
             this.Name = Name;
-            this.IQ = IQ;
+            this.Iq = Iq;
         }
+
         private string Name { get; }
-        private int IQ { get; }
+        private int Iq { get; }
+
         public virtual void Introduse()
         {
-            Console.WriteLine("Привет, меня зовут {0} и мой IQ равен {1}", Name, IQ);
+            Console.WriteLine("Привет, меня зовут {0} и мой IQ равен {1}", Name, Iq);
         }
+
         public virtual void SaySomething()
         {
             Console.WriteLine("Если оно зеленое или дергается – это биология." +
-                "Если воняет – это химия." +
-                "Если не работает – это физика." +
-                "Если непонятно – это математика." +
-                "Если это бессмысленно – это либо экономика, либо психология.");
+                              "Если воняет – это химия." +
+                              "Если не работает – это физика." +
+                              "Если непонятно – это математика." +
+                              "Если это бессмысленно – это либо экономика, либо психология.");
         }
+
         public abstract void DoSomething();
     }
+
     public class Mathematician : Scientist
     {
-        public Mathematician(string Name, int IO) : base(Name, IO)
+        public Mathematician(string Name, int Io) : base(Name, Io)
         {
             this.Name = Name;
-            IQ = IQ;
+            Iq = Iq;
         }
+
         public string Name { get; }
-        public int IQ { get; }
+        public int Iq { get; }
+
         public override void SaySomething()
         {
             Console.WriteLine("Математика это царица всех наук, физика есть лишь ее приложение.");
         }
+
         public override void DoSomething()
         {
             Console.WriteLine("Смотри, я знаю, что такое целые числа, проверь меня, введи что нибудь:");
-            int Number = getStringAndParseToInt();
+            var number = GetStringAndParseToInt();
             Console.WriteLine("О, ты ввел число, давай теперь я возведу его в десятую степень: ");
-            for (int i = 0; i <= 10; i++)
-            {
-                Number = intMultiplication(Number, Number);
-            }
-            Console.WriteLine(Number);
+            for (var i = 0; i <= 10; i++) number = IntMultiplication(number, number);
+            Console.WriteLine(number);
             Console.WriteLine("А теперь, давай найдем середину: ");
-            Console.WriteLine(intDivision(Number, 2));
+            Console.WriteLine(IntDivision(number, 2));
         }
-        protected virtual int getStringAndParseToInt()
+
+        protected virtual int GetStringAndParseToInt()
         {
-            string stringForCheck = Console.ReadLine();
+            var stringForCheck = Console.ReadLine();
             int parsedInt;
 
-            while (!Int32.TryParse(stringForCheck, out parsedInt))
+            while (!int.TryParse(stringForCheck, out parsedInt))
             {
                 Console.WriteLine("Это не целое число, попробуй еще раз.");
                 stringForCheck = Console.ReadLine();
             }
+
             return parsedInt;
         }
-        protected virtual int intMultiplication(int FirstMultipler, int SecondMultipler)
+
+        protected virtual int IntMultiplication(int FirstMultipler, int SecondMultipler)
         {
             return FirstMultipler * SecondMultipler;
         }
-        protected virtual float intDivision(int Divident, int Devider) => Divident / Devider;
 
+        protected virtual float IntDivision(int Divident, int Devider)
+        {
+            return Divident / Devider;
+        }
     }
+
     public class Physicist : Mathematician
     {
-        public Physicist(string Name, int IO) : base(Name, IO)
+        public Physicist(string Name, int Io) : base(Name, Io)
         {
             this.Name = Name;
             IQ = IQ;
         }
-        public new string Name { get; }
-        public new int IQ { get; }
+
+        public string Name { get; }
+        public int IQ { get; }
+
         public override void SaySomething()
         {
             Console.WriteLine("Я физик и имею право на сохранение энергии.");
         }
+
         public override void DoSomething()
         {
             Console.WriteLine("Благодаря математике, физики могут вычислять нечто интересное.");
             Console.WriteLine("К примеру, скажи какое нибудь целое число:");
-            int FirstNumber = getStringAndParseToInt();
+            var firstNumber = GetStringAndParseToInt();
             Console.WriteLine("А теперь еще одно:");
-            int SecondNumber = getStringAndParseToInt();
-            showOhmEquation(FirstNumber, SecondNumber);
+            var secondNumber = GetStringAndParseToInt();
+            ShowOhmEquation(firstNumber, secondNumber);
         }
-        private void showOhmEquation(int FirstNumber, int SecondNumber)
+
+        private void ShowOhmEquation(int FirstNumber, int SecondNumber)
         {
             Console.WriteLine("Отлично, у нас есть два числа");
-            Console.WriteLine("Если это напряжение и сопротивление, то сила тока будет равна: " + intDivision(FirstNumber, SecondNumber));
-            Console.WriteLine("Если это напряжение и сила тока, сопротивление окажется: " + intDivision(FirstNumber, SecondNumber));
-            Console.WriteLine("Ну а если эити два часла предстиавляют собьой силу тока и сопротивление, то напряжение получится:" + intMultiplication(FirstNumber, SecondNumber));
+            Console.WriteLine("Если это напряжение и сопротивление, то сила тока будет равна: " +
+                              IntDivision(FirstNumber, SecondNumber));
+            Console.WriteLine("Если это напряжение и сила тока, сопротивление окажется: " +
+                              IntDivision(FirstNumber, SecondNumber));
+            Console.WriteLine(
+                "Ну а если эити два часла предстиавляют собьой силу тока и сопротивление, то напряжение получится:" +
+                IntMultiplication(FirstNumber, SecondNumber));
         }
     }
 }

@@ -1,61 +1,64 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using NUnit.Framework;
 
 namespace DEXCource
 {
-    class LINQ
+    internal class LINQ
     {
         [Test]
         public void LINQTest()
         {
             var cats = BirdsGenerate(100);
-            var old = cats.Where(t => t.age > 30);
-            var orderByAge = cats.OrderBy(t => t.age);
-            var groupByName = cats.GroupBy(t => t.name);
-            var onlyGarfield = cats.Where(t => t.name == "Гарфилд");
-            var totalWeight = cats.Sum(t => t.weight);
-            Assert.That(old.All(t => t.age > 30));
-            int testItem = 0;
-            foreach(var item in orderByAge)
+            var old = cats.Where(t => t.Age > 30);
+            var orderByAge = cats.OrderBy(t => t.Age);
+            var groupByName = cats.GroupBy(t => t.Name);
+            var onlyGarfield = cats.Where(t => t.Name == "Гарфилд");
+            var totalWeight = cats.Sum(t => t.Weight);
+            Assert.That(old.All(t => t.Age > 30));
+            var testItem = 0;
+            foreach (var item in orderByAge)
             {
-                Assert.That(item.age >= testItem);
-                testItem = item.age;
+                Assert.That(item.Age >= testItem);
+                testItem = item.Age;
             }
-            Assert.That(onlyGarfield.All(t => t.name == "Гарфилд"));
+
+            Assert.That(onlyGarfield.All(t => t.Name == "Гарфилд"));
             Assert.That(totalWeight >= 100);
         }
+
         public Collection<Cat> BirdsGenerate(int BirdsCount)
         {
-            string[] birdNames = new string[8]
+            string[] birdNames =
             {
                 "Матроскин", "Гарфилд", "Рыжий", "Мурзик", "Снежок", "Полосатый", "Мемасик", "Том"
             };
             var random = new Random();
 
             var generatedCats = new Collection<Cat>();
-            for (int i = 0; i < BirdsCount; i++)
-            {
-                generatedCats.Add(new Cat(generatedCats.Count, birdNames[random.Next(0, 7)], random.Next(1, 48), random.Next(100) < 50 ? true : false, random.Next(1, 88)));
-            }
+            for (var i = 0; i < BirdsCount; i++)
+                generatedCats.Add(new Cat(generatedCats.Count, birdNames[random.Next(0, 7)], random.Next(1, 48),
+                    random.Next(100) < 50, random.Next(1, 88)));
             return generatedCats;
         }
     }
+
     public class Cat
     {
         public Cat(int id, string name, int age, bool isMale, double weight)
         {
-            this.id = id;
-            this.name = name;
-            this.age = age;
-            this.isMale = isMale;
-            this.weight = weight;
+            Id = id;
+            Name = name;
+            Age = age;
+            IsMale = isMale;
+            Weight = weight;
         }
-        public int id { get; }
-        public string name { get; set; }
-        public int age { get; set; }
-        public bool isMale { get; }
-        public double weight { get; set; }
+
+        public int Id { get; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public bool IsMale { get; }
+        public double Weight { get; set; }
     }
 }

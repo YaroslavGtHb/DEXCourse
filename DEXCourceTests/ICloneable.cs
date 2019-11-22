@@ -1,7 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DEXCource
 {
@@ -10,15 +7,15 @@ namespace DEXCource
         [Test]
         public void ICloneableTest()
         {
-            GalacticRepublicSolider Solider = new GalacticRepublicSolider();
-            Solider.Name = "Solider";
-            Solider.Rang = 44;
+            GalacticRepublicSolider solider = new GalacticRepublicSolider();
+            solider.Name = "Solider";
+            solider.Rang = 44;
             GalacticRepublicSolider SoliderClone = new GalacticRepublicSolider();
-            SoliderClone = (GalacticRepublicSolider)Solider.Clone();
-            Solider.Name = "MainSolider";
-            Solider.Rang = 88;
-            Assert.AreNotEqual(Solider.Name, SoliderClone.Name);
-            Assert.AreNotEqual(Solider.Rang, SoliderClone.Rang);
+            SoliderClone = (GalacticRepublicSolider)solider.Clone();
+            solider.Name = "MainSolider";
+            solider.Rang = 88;
+            Assert.AreNotEqual(solider.Name, SoliderClone.Name);
+            Assert.AreNotEqual(solider.Rang, SoliderClone.Rang);
         }
     }
     class GalacticRepublicSolider : ICloneable
