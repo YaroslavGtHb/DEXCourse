@@ -22,7 +22,7 @@ namespace DEXCource
 
         public GeometricFigure[] GeometricFigureGenerate(int GeometricFigureCount)
         {
-            var geometricFigureTypes = new string[8]
+            var geometricFigureTypes = new[]
             {
                 "Многоугольник", "Шестнадцатиугольник", "Восьмиугольник", "Тропеция", "Ромб", "Прямоугольник",
                 "Квадрат", "Круг"
@@ -61,9 +61,9 @@ namespace DEXCource
         public int Compare(GeometricFigure firstFigure, GeometricFigure secondFigure)
         {
             //Поменял местами, для обратной сортивровки.
-            if (firstFigure != null && firstFigure.Square < secondFigure.Square)
+            if (secondFigure != null && (firstFigure != null && firstFigure.Square < secondFigure.Square))
                 return 1;
-            return firstFigure.Square > secondFigure.Square ? -1 : 0;
+            return secondFigure != null && (firstFigure != null && firstFigure.Square > secondFigure.Square) ? -1 : 0;
         }
     }
 }

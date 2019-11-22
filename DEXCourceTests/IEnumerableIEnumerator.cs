@@ -34,36 +34,36 @@ namespace DEXCource
 
     public class ZooArray
     {
-        private string[] animals = new string[0];
+        private string[] _animals = new string[0];
 
         public void Add(string Animal)
         {
-            Array.Resize(ref animals, animals.Length + 1);
-            animals[^1] = Animal;
+            Array.Resize(ref _animals, _animals.Length + 1);
+            _animals[^1] = Animal;
         }
 
         public int GetLenght()
         {
-            return animals.Length;
+            return _animals.Length;
         }
 
         public string GetItemName(int index)
         {
-            return animals[index];
+            return _animals[index];
         }
 
         public IEnumerator<string> GetEnumerator()
         {
-            return new ZooEnumerator(animals);
+            return new ZooEnumerator(_animals);
         }
 
         public class ZooEnumerator : IEnumerator<string>
         {
-            private readonly string[] animals;
+            private readonly string[] _animals;
 
             public ZooEnumerator(string[] animals)
             {
-                this.animals = animals;
+                this._animals = animals;
             }
 
             public int Position { get; set; } = -1;
@@ -72,9 +72,9 @@ namespace DEXCource
             {
                 get
                 {
-                    if (Position == -1 || Position >= animals.Length)
+                    if (Position == -1 || Position >= _animals.Length)
                         throw new InvalidOperationException();
-                    return animals[Position];
+                    return _animals[Position];
                 }
             }
 
@@ -82,7 +82,7 @@ namespace DEXCource
 
             public bool MoveNext()
             {
-                if (Position < animals.Length - 1)
+                if (Position < _animals.Length - 1)
                 {
                     Position++;
                     return true;
