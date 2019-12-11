@@ -112,7 +112,7 @@ namespace DEXCource
             IQ = IQ;
         }
 
-        public string Name { get; }
+        public new string Name { get; }
         public int IQ { get; }
 
         public override void SaySomething()
