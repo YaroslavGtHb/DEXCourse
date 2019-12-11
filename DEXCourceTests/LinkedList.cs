@@ -2,111 +2,153 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using NUnit.Framework;
 
 namespace DEXCource
 {
     class LinkedList
     {
-
-    }
-    public class Item<T>
-    {
-        public T Data { get; set; }
-        public Item<T> Next { get; set; }
-        public Item(T data)
+        [Test]
+        public void LinkedListTest()
         {
-            if (data == null)
-            {
-                throw new ArgumentNullException(nameof(data));
-            }
-
+            var linkedList = new LinkedListRealization<int>();
+            linkedList.Add(2);
+            linkedList.Add(4);
+            linkedList.Add(8);
+            linkedList.Add(16);
+            linkedList.
+        }
+    }
+    public class Element<T>
+    {
+        public Element(T data)
+        {
             Data = data;
         }
-        public override string ToString()
-        {
-            return Data.ToString();
-        }
+
+        public T Data { get; set; }
+        public Element<T> Previous { get; set; }
+        public Element<T> Next { get; set; }
     }
     public class LinkedListRealization<T> : IEnumerable<T>
     {
-        private Item<T> _head = null;
-        private Item<T> _tail = null;
-        private int _count = 0;
-        public int Count
-        {
-            get => _count;
-        }
+        Element<T> head;
+        Element<T> tail;
+        int count;
         public void Add(T data)
         {
-            if (data == null)
-            {
-                throw new ArgumentNullException(nameof(data));
-            }
-            var item = new Item<T>(data);
-            if (_head == null)
-            {
-                _head = item;
-            }
+            Element<T> node = new Element<T>(data);
+
+            if (head == null)
+                head = node;
             else
             {
-                _tail.Next = item;
+                tail.Next = node;
+                node.Previous = tail;
             }
-            _tail = item;
-            _count++;
+
+            tail = node;
+            count++;
         }
-        public void Delete(T data)
+
+        public void AddFirst(T data)
         {
-            if (data == null)
-            {
-                throw new ArgumentNullException(nameof(data));
-            }
-            var current = _head;
-            Item<T> previous = null;
+            Element<T> node = new Element<T>(data);
+            Element<T> temp = head;
+            node.Next = temp;
+            head = node;
+            if (count == 0)
+                tail = head;
+            else
+                temp.Previous = node;
+            count++;
+        }
+        public bool Remove(T data)
+        {
+            Element<T> current = head;
             while (current != null)
             {
                 if (current.Data.Equals(data))
                 {
-                    if (previous != null)
-                    {
-                        previous.Next = current.Next;
-                        if (current.Next == null)
-                        {
-                            _tail = previous;
-                        }
-                    }
-                    else
-                    {
-                        _head = _head.Next;
-                        if (_head == null)
-                        {
-                            _tail = null;
-                        }
-                    }
-                    _count--;
                     break;
                 }
-                previous = current;
+
                 current = current.Next;
             }
+            if (current != null)
+            {
+                if (current.Next != null)
+                {
+                    current.Next.Previous = current.Previous;
+                }
+                else
+                {
+                    tail = current.Previous;
+                }
+                if (current.Previous != null)
+                {
+                    current.Previous.Next = current.Next;
+                }
+                else
+                {
+                    head = current.Next;
+                }
+                count--;
+                return true;
+            }
+
+            return false;
+        }
+
+        public int Count
+        {
+            get { return count; }
+        }
+        public bool IsEmpty
+        {
+            get { return count == 0; }
         }
         public void Clear()
         {
-            _head = null;
-            _tail = null;
-            _count = 0;
+            head = null;
+            tail = null;
+            count = 0;
         }
-        public IEnumerator<T> GetEnumerator()
+        public bool Contains(T data)
         {
-            var current = _head;
+            Element<T> current = head;
+            while (current != null)
+            {
+                if (current.Data.Equals(data))
+                    return true;
+                current = current.Next;
+            }
+
+            return false;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable) this).GetEnumerator();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            Element<T> current = head;
             while (current != null)
             {
                 yield return current.Data;
                 current = current.Next;
             }
         }
-        IEnumerator IEnumerable.GetEnumerator()
+        public IEnumerable<T> BackEnumerator()
         {
-            return ((IEnumerable)this).GetEnumerator();
+            Element<T> current = tail;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Previous;
+            }
         }
     }
 }
