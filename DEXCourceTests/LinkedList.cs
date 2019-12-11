@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
@@ -16,7 +17,12 @@ namespace DEXCource
             linkedList.Add(4);
             linkedList.Add(8);
             linkedList.Add(16);
-            linkedList.
+            var testitem = linkedList.ElementAt(3);
+            foreach (var item in linkedList.BackEnumerator())
+            {
+                testitem = item;
+            }
+            Assert.AreEqual(testitem, linkedList.First());
         }
     }
     public class Element<T>
