@@ -63,7 +63,7 @@ namespace DEXCource
 
             public ZooEnumerator(string[] animals)
             {
-                this._animals = animals;
+                _animals = animals;
             }
 
             public int Position { get; set; } = -1;

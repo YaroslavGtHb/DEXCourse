@@ -61,9 +61,9 @@ namespace DEXCource
         public int Compare(GeometricFigure firstFigure, GeometricFigure secondFigure)
         {
             //Поменял местами, для обратной сортивровки.
-            if (secondFigure != null && (firstFigure != null && firstFigure.Square < secondFigure.Square))
+            if (secondFigure != null && firstFigure != null && firstFigure.Square < secondFigure.Square)
                 return 1;
-            return secondFigure != null && (firstFigure != null && firstFigure.Square > secondFigure.Square) ? -1 : 0;
+            return secondFigure != null && firstFigure != null && firstFigure.Square > secondFigure.Square ? -1 : 0;
         }
     }
 }

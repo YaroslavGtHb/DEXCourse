@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace DEXCource
 {
-    class LinkedList
+    internal class LinkedList
     {
         [Test]
         public void LinkedListTest()
@@ -18,13 +16,11 @@ namespace DEXCource
             linkedList.Add(8);
             linkedList.Add(16);
             var testitem = linkedList.ElementAt(3);
-            foreach (var item in linkedList.BackEnumerator())
-            {
-                testitem = item;
-            }
+            foreach (var item in linkedList.BackEnumerator()) testitem = item;
             Assert.AreEqual(testitem, linkedList.First());
         }
     }
+
     public class Element<T>
     {
         public Element(T data)
@@ -36,17 +32,39 @@ namespace DEXCource
         public Element<T> Previous { get; set; }
         public Element<T> Next { get; set; }
     }
+
     public class LinkedListRealization<T> : IEnumerable<T>
     {
-        Element<T> head;
-        Element<T> tail;
-        int count;
+        private Element<T> head;
+        private Element<T> tail;
+
+        public int Count { get; private set; }
+
+        public bool IsEmpty => Count == 0;
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable) this).GetEnumerator();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            var current = head;
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
+        }
+
         public void Add(T data)
         {
-            Element<T> node = new Element<T>(data);
+            var node = new Element<T>(data);
 
             if (head == null)
+            {
                 head = node;
+            }
             else
             {
                 tail.Next = node;
@@ -54,75 +72,59 @@ namespace DEXCource
             }
 
             tail = node;
-            count++;
+            Count++;
         }
 
         public void AddFirst(T data)
         {
-            Element<T> node = new Element<T>(data);
-            Element<T> temp = head;
+            var node = new Element<T>(data);
+            var temp = head;
             node.Next = temp;
             head = node;
-            if (count == 0)
+            if (Count == 0)
                 tail = head;
             else
                 temp.Previous = node;
-            count++;
+            Count++;
         }
+
         public bool Remove(T data)
         {
-            Element<T> current = head;
+            var current = head;
             while (current != null)
             {
-                if (current.Data.Equals(data))
-                {
-                    break;
-                }
+                if (current.Data.Equals(data)) break;
 
                 current = current.Next;
             }
+
             if (current != null)
             {
                 if (current.Next != null)
-                {
                     current.Next.Previous = current.Previous;
-                }
                 else
-                {
                     tail = current.Previous;
-                }
                 if (current.Previous != null)
-                {
                     current.Previous.Next = current.Next;
-                }
                 else
-                {
                     head = current.Next;
-                }
-                count--;
+                Count--;
                 return true;
             }
 
             return false;
         }
 
-        public int Count
-        {
-            get { return count; }
-        }
-        public bool IsEmpty
-        {
-            get { return count == 0; }
-        }
         public void Clear()
         {
             head = null;
             tail = null;
-            count = 0;
+            Count = 0;
         }
+
         public bool Contains(T data)
         {
-            Element<T> current = head;
+            var current = head;
             while (current != null)
             {
                 if (current.Data.Equals(data))
@@ -133,23 +135,9 @@ namespace DEXCource
             return false;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable) this).GetEnumerator();
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            Element<T> current = head;
-            while (current != null)
-            {
-                yield return current.Data;
-                current = current.Next;
-            }
-        }
         public IEnumerable<T> BackEnumerator()
         {
-            Element<T> current = tail;
+            var current = tail;
             while (current != null)
             {
                 yield return current.Data;
