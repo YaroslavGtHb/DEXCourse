@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\yar\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
@@ -20,6 +20,7 @@
         <e p="Casting.cs" t="Include" />
         <e p="EqualsGetHashCode.cs" t="Include" />
         <e p="Events.cs" t="Include" />
+        <e p="ListDictionary.cs" t="Include" />
         <e p="OOP.cs" t="Include" />
       </e>
       <e p="DeepClone.cs" t="Include" />
@@ -31,7 +32,6 @@
       <e p="IEnumerableIEnumerator.cs" t="Include" />
       <e p="LinkedList.cs" t="Include" />
       <e p="LINQ.cs" t="Include" />
-      <e p="ListDictionary.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
           <e p="netcoreapp3.0" t="Include">

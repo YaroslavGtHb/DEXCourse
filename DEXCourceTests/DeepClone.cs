@@ -26,7 +26,6 @@ namespace DEXCource
             boolValue = boolValue;
             stringValue = stringValue;
         }
-
         public int intValue { get; set; }
         public double doubleValue { get; set; }
         public bool boolValue { get; set; }
