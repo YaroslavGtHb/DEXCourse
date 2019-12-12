@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\yar\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\yar\.nuget\packages\nunit3testadapter\3.13.0\build\netcoreapp1.0\nunit.engine.netstandard.dll" t="Include" />
+    <e p="C:\Users\yar\.nuget\packages\nunit3testadapter\3.13.0\build\netcoreapp1.0\NUnit3.TestAdapter.dll" t="Include" />
+    <e p="C:\Users\yar\.nuget\packages\nunit3testadapter\3.13.0\build\netcoreapp1.0\NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="C:\Users\yar\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\yar\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_DEXCource.-314587502.00" t="ExcludeRecursive" />
+    <e p="D:\DEXCourse\DEXCource" t="IncludeFlat">
+      <e p="DEXCource.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="D:\DEXCourse\DEXCourceTests" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="CHECKED" t="Include">
+        <e p="AsyncAwait.cs" t="Include" />
+        <e p="Casting.cs" t="Include" />
+        <e p="EqualsGetHashCode.cs" t="Include" />
+        <e p="Events.cs" t="Include" />
+        <e p="OOP.cs" t="Include" />
+      </e>
+      <e p="DeepClone.cs" t="Include" />
+      <e p="DEXCource.csproj" t="IncludeRecursive" />
+      <e p="Extentions.cs" t="Include" />
+      <e p="GenericTypeGenericMember.cs" t="Include" />
+      <e p="ICloneable.cs" t="Include" />
+      <e p="IComparable.cs" t="Include" />
+      <e p="IEnumerableIEnumerator.cs" t="Include" />
+      <e p="LinkedList.cs" t="Include" />
+      <e p="LINQ.cs" t="Include" />
+      <e p="ListDictionary.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.0" t="Include">
+            <e p="DEXCource.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Reflection.cs" t="Include" />
+      <e p="RegularExpression.cs" t="Include" />
+      <e p="Serialization.cs" t="Include" />
+    </e>
+  </component>
+</project>
