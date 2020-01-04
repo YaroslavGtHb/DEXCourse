@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 
 namespace DEXCource
 {
@@ -10,24 +8,36 @@ namespace DEXCource
     }
     public static class ObjectCopier
     {
-        public static T Clone<T>(T source)
+        public static object CloneObject(this object objSource)
         {
-            if (!typeof(T).IsSerializable)
+            Type typeSource = objSource.GetType();
+            object objTarget = Activator.CreateInstance(typeSource);
+            PropertyInfo[] propertyInfo = typeSource.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            foreach (PropertyInfo property in propertyInfo)
             {
-                throw new ArgumentException("Данный тип не может быть сериализован.");
+                if (property.CanWrite)
+                {
+                    if (property.PropertyType.IsValueType || property.PropertyType.IsEnum || property.PropertyType.Equals(typeof(System.String)))
+
+                    {
+                        property.SetValue(objTarget, property.GetValue(objSource, null), null);
+                    }
+                    else
+                    {
+                        object objPropertyValue = property.GetValue(objSource, null);
+                        if (objPropertyValue == null)
+                        {
+
+                            property.SetValue(objTarget, null, null);
+                        }
+                        else
+                        {
+                            property.SetValue(objTarget, objPropertyValue.CloneObject(), null);
+                        }
+                    }
+                }
             }
-            if (Object.ReferenceEquals(source, null))
-            {
-                return default(T);
-            }
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new MemoryStream();
-            using (stream)
-            {
-                formatter.Serialize(stream, source);
-                stream.Seek(0, SeekOrigin.Begin);
-                return (T)formatter.Deserialize(stream);
-            }
+            return objTarget;
         }
     }
 }
