@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 
 namespace DEXCource
 {
@@ -16,7 +14,7 @@ namespace DEXCource
         {
             if (!typeof(T).IsSerializable)
             {
-                throw new ArgumentException("The type must be serializable.", "source");
+                throw new ArgumentException("Данный тип не может быть сериализован.");
             }
             if (Object.ReferenceEquals(source, null))
             {
