@@ -7,7 +7,7 @@ namespace DEXCource
     class DeepClone
     {
     }
-    public static class ObjectExtensions
+    public static class DeepCopyObjectExtensions
     {
         private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
 
@@ -23,11 +23,27 @@ namespace DEXCource
         }
         private static Object InternalCopy(Object originalObject, IDictionary<Object, Object> visited)
         {
-            if (originalObject == null) return null;
+            if (originalObject == null)
+            {
+                return null;
+            }
+
             var typeToReflect = originalObject.GetType();
-            if (IsPrimitive(typeToReflect)) return originalObject;
-            if (visited.ContainsKey(originalObject)) return visited[originalObject];
-            if (typeof(Delegate).IsAssignableFrom(typeToReflect)) return null;
+            if (IsPrimitive(typeToReflect))
+            {
+                return originalObject;
+            }
+
+            if (visited.ContainsKey(originalObject))
+            {
+                return visited[originalObject];
+            }
+
+            if (typeof(Delegate).IsAssignableFrom(typeToReflect))
+            {
+                return null;
+            }
+
             var cloneObject = CloneMethod.Invoke(originalObject, null);
             if (typeToReflect.IsArray)
             {
