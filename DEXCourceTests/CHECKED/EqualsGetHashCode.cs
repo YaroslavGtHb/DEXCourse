@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Security.Cryptography;
 using System.Text;
-using NUnit.Framework;
 
 namespace DEXCource
 {
@@ -52,7 +52,7 @@ namespace DEXCource
             PersonInfo person;
             try
             {
-                person = (PersonInfo) testedPerson;
+                person = (PersonInfo)testedPerson;
             }
             catch (InvalidCastException)
             {

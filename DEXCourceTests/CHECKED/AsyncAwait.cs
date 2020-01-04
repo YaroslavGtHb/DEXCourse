@@ -1,11 +1,11 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
 namespace DEXCource
 {
@@ -14,7 +14,7 @@ namespace DEXCource
         [Test]
         public void AsyncAwaitTest()
         {
-            int[] elements = {1, 2, 3, 4, 5, 6, 7, 8};
+            int[] elements = { 1, 2, 3, 4, 5, 6, 7, 8 };
             var arithmeticAverage = new ArithmeticAverage();
 
             var watchParrallel = Stopwatch.StartNew();

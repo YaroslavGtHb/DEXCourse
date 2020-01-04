@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Runtime.Remoting;
-using NUnit.Framework;
 
 namespace DEXCource
 {

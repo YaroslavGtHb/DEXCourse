@@ -1,5 +1,5 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
 
 namespace DEXCource
 {
@@ -9,7 +9,7 @@ namespace DEXCource
         public void CastingTest()
         {
             var FullName = "Иван Иванов";
-            var people = (Person) FullName;
+            var people = (Person)FullName;
             Assert.AreEqual("Иван", people.FirstName);
             Assert.AreEqual("Иванов", people.LastName);
         }
@@ -28,7 +28,7 @@ namespace DEXCource
 
         public static explicit operator Person(string FullName)
         {
-            var words = FullName.Split(new[] {' '});
+            var words = FullName.Split(new[] { ' ' });
             try
             {
                 return new Person(words[0], words[1]);
